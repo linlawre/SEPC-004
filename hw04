@@ -1,0 +1,130 @@
+1.
+Generics allow you to define type-safe data structures, without committing to actual data types.
+
+2.
+public class List<T>
+
+3.
+2
+
+4.
+yes
+
+5.
+add
+
+6.
+remove, pop
+
+7.
+T
+
+8.
+No
+
+9.
+Yes
+
+10.
+yes
+
+
+
+
+1.
+
+public class MyStack<T>
+{
+    public ArrayList<T> a;
+    MyStack()
+    {
+        a = new ArrayList<T>();
+    }
+    public int Count()
+    {
+        return a.Count;
+    }
+    public T pop()
+    {
+        var temp = a[a.Count - 1];
+        a.RemoveAt(a.Count - 1);
+    }
+    public void Push(T n)
+    {
+        a.Add(n);
+    }
+}
+
+2.
+
+public class MyList<T>
+{
+    public List<T> a;
+    MyList()
+    {
+        a = new List<T>();
+    }
+    public void Add(T element)
+    {
+        a.Add(element);
+    }
+    public T Remove(int index)
+    {
+        T temp = a.ElementAt(index);
+        a.RemoveAt(index);
+        return temp;
+    }
+    public bool Contains(T element)
+    {
+        if (a.Contains(element))
+            return true;
+        return false;
+    }
+    public void Clear()
+    {
+        a.Clear();
+    }
+    public void InsertAt(T element, int index)
+    {
+        a.Insert(index, element);
+    }
+    public void DeleteAt(int index)
+    {
+        a.RemoveAt(index);
+    }
+    public T Find(int index)
+    {
+        return a.ElementAt(index);
+    }
+}
+
+3.
+
+public class GenericRepository<T> : IRepository<T>
+{
+    List<T> list = new List<T>();
+    public void Add(T item)
+    {
+        list.Add(item);
+    }
+    public void Remove(T item)
+    {
+        list.Remove(item);
+    }
+    public void Save()
+    {
+        
+    }
+    public IEnumerable<T> GetAll()
+    {
+        foreach (var item in list)
+        {
+            Console.WriteLine(item);
+        }
+    }
+    public T GetById(int id)
+    {
+        return list.ElementAt(id);
+    }
+
+}
